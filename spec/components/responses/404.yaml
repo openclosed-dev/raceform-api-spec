@@ -1,0 +1,16 @@
+x-summary: Not Found
+description: |
+  The resource specified in the URL path was not found.
+content:
+  application/vnd.api+json:
+    schema:
+      type: object
+      required: [errors]
+      properties:
+        errors:
+          description: A single error.
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            $ref: ../schemas/Error.yaml

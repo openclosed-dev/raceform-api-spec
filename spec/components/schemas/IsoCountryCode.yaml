@@ -1,0 +1,7 @@
+description: |
+  The country code as defined in the ISO 3166-1 alpha-3 standard.
+type: string
+minLength: 3
+maxLength: 3
+pattern: ^[A-Z]{3}$
+example: GBR

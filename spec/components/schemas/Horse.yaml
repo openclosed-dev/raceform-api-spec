@@ -1,0 +1,61 @@
+description: |
+  A resource representing a racehorse.
+type: object
+required: [type, id, attributes, relationships]
+properties:
+  type:
+    description: The type of this resource.
+    type: string
+    const: horse
+  id:
+    description: |
+      The identifier of this resource as an opaque string.
+    type: string
+    example: '123e4567-e89b-12d3-a456-426614174000'
+  attributes:
+    description: |
+      The attributes of this resource.
+    type: object
+    required: [name, suffixedName, birthYear]
+    properties:
+      name:
+        description: The name of this horse.
+        type: string
+        example: Frankel
+      suffixedName:
+        description: |
+          The name of this horse with the country code suffix.
+          The country code suffix identifies the foaling country.
+          Formatted as `{name} ({suffix})`, where `{suffix}` is the `suffix` attribute of the related country.
+          The suffix is always present.
+        type: string
+        example: Frankel (GB)
+      birthYear:
+        description: The birth year of this horse.
+        type: integer
+        example: 2008
+  relationships:
+    description: |
+      The relationships of this resource.
+    type: object
+    required: [country]
+    properties:
+      country:
+        description: |
+          The country where this horse was born.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              A resource identifier object for the related country.
+              This is never `null`.
+            type: object
+            required: [type, id]
+            properties:
+              type:
+                description: The type of the resource.
+                type: string
+                const: country
+              id:
+                $ref: ./IsoCountryCode.yaml

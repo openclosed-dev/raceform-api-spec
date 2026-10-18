@@ -1,0 +1,53 @@
+operationId: get-horse
+summary: Get Horse
+description: |
+  Get a horse specified by the identifier.
+parameters:
+- name: id
+  in: path
+  description: |
+    The identifier of the horse.
+    Passing any invalid or unknown identifier results in a `404` error response.
+    The server does not validate the format of the identifier.
+  required: true
+  schema:
+    type: string
+    example: '123e4567-e89b-12d3-a456-426614174000'
+- name: include
+  in: query
+  description: |
+    The relationship path of related resources to include in the response document.
+    If specified, the value must be exactly `country`;
+    any other value, including an empty value, results in a `400` error response.
+  required: false
+  schema:
+    type: string
+    enum: [country]
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data]
+          properties:
+            data:
+              $ref: ../../../components/schemas/Horse.yaml
+            included:
+              description: |
+                Resources referenced by `data.relationships.country`.
+                Present if and only if the `include` query parameter has the `country` value.
+              type: array
+              items:
+                $ref: ../../../components/schemas/Country.yaml
+              minItems: 1
+              maxItems: 1
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '404':
+    $ref: ../../../components/responses/404.yaml
+  '406':
+    $ref: ../../../components/responses/406.yaml
+  '415':
+    $ref: ../../../components/responses/415.yaml

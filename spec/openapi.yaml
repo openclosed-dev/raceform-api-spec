@@ -1,0 +1,20 @@
+openapi: 3.1.0
+info:
+  version: '1.0.0'
+  title: Raceform API
+  description: |
+    Web API for processing Raceform data.
+
+    Errors are evaluated in the following order:
+    `415`, `406`, `400`, `404`.
+    Only the status of the first matching error category is returned.
+    A `400` response may contain multiple error objects.
+
+    All responses use the Content-Type `application/vnd.api+json`
+    without any media type parameters.
+
+paths:
+  /countries/{id}:
+    $ref: ./paths/countries/_id/index.yaml
+  /horses/{id}:
+    $ref: ./paths/horses/_id/index.yaml

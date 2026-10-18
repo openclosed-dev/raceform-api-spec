@@ -1,0 +1,35 @@
+operationId: get-country
+summary: Get Country
+description: |
+  Get a country specified by the resource identifier.
+parameters:
+- name: id
+  in: path
+  description: |
+    The code of the country as defined in the ISO 3166-1 alpha-3 standard.
+    Passing any invalid or unknown code results in a `404` error response.
+    Matching is case-sensitive; for example, `gbr` results in `404`.
+    The server does not validate the format of the code.
+  required: true
+  schema:
+    type: string
+    example: GBR
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data]
+          properties:
+            data:
+              $ref: ../../../components/schemas/Country.yaml
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '404':
+    $ref: ../../../components/responses/404.yaml
+  '406':
+    $ref: ../../../components/responses/406.yaml
+  '415':
+    $ref: ../../../components/responses/415.yaml

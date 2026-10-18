@@ -1,0 +1,19 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  "dockerComposeFile": "compose.yaml",
+  "service": "devcontainer",
+  "workspaceFolder": "/home/${localEnv:USER}/${localWorkspaceFolderBasename}",
+  "features": {
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "streetsidesoftware.code-spell-checker",
+        "42Crunch.vscode-openapi"
+      ]
+    }
+  },
+  "remoteUser": "${localEnv:USER}",
+  "updateRemoteUserUID": false
+}

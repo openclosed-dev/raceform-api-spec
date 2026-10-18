@@ -1,0 +1,32 @@
+description: |
+  A resource representing a country.
+type: object
+required: [type, id, attributes]
+properties:
+  type:
+    description: The type of this resource.
+    type: string
+    const: country
+  id:
+    $ref: ./IsoCountryCode.yaml
+  attributes:
+    description: |
+      The attributes of this resource.
+    type: object
+    required: [name, suffix]
+    properties:
+      name:
+        description: |
+          The name of this country.
+        type: string
+        example: United Kingdom of Great Britain and Northern Ireland
+      suffix:
+        description: |
+          The country code suffix used by convention in the horse racing industry.
+          The value does not necessarily match the `id` value.
+          See the International Code of Suffixes.
+        type: string
+        minLength: 2
+        maxLength: 3
+        pattern: '^[A-Z]{2,3}$'
+        example: GB

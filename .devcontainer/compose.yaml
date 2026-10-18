@@ -1,0 +1,24 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      args:
+      - USERNAME=${USER:?}
+      - USER_UID=${COMPOSE_USER_ID:-1000}
+      - USER_GID=${COMPOSE_GROUP_ID:-1000}
+      - CLAUDE_CODE_VERSION=latest
+      - REDOCLY_CLI_VERSION=latest
+    environment:
+    - ANTHROPIC_API_KEY
+    command: sleep infinity
+    volumes:
+    - type: bind
+      source: ..
+      target: /home/${USER}/raceform-api-spec
+      consistency: consistent
+    - type: volume
+      source: claude-code
+      target: /home/${USER}/.claude
+
+volumes:
+  claude-code: {}

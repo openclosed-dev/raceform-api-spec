@@ -1,0 +1,20 @@
+x-summary: Not Acceptable
+description: |
+  Returned when the `Accept` header contains the JSON:API media type,
+  but every instance of it is modified with media type parameters
+  other than `profile`.
+  Note that this API supports no extensions, so `ext` is treated as unsupported,
+  while `profile` values are ignored.
+content:
+  application/vnd.api+json:
+    schema:
+      type: object
+      required: [errors]
+      properties:
+        errors:
+          description: A single error.
+          type: array
+          minItems: 1
+          maxItems: 1
+          items:
+            $ref: ../schemas/Error.yaml
