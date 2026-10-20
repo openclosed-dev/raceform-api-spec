@@ -16,13 +16,18 @@ parameters:
 - name: include
   in: query
   description: |
-    The relationship path of related resources to include in the response document.
-    If specified, the value must be exactly `country`;
-    any other value, including an empty value, results in a `400` error response.
+    A comma-separated list of relationship paths of related resources to include in the response document.
+    If omitted or empty, no related resources are included.
+    Duplicate values are allowed.
+    Any value other than `country` results in a `400` error response.
   required: false
+  style: form
+  explode: false
   schema:
-    type: string
-    enum: [country]
+    type: array
+    items:
+      type: string
+      enum: [country]
 responses:
   '200':
     description: Successful response
@@ -31,13 +36,14 @@ responses:
         schema:
           type: object
           required: [data]
+          additionalProperties: false
           properties:
             data:
               $ref: ../../../components/schemas/Horse.yaml
             included:
               description: |
                 Resources referenced by `data.relationships.country`.
-                Present if and only if the `include` query parameter has the `country` value.
+                Present if and only if the `include` query parameter contains `country`.
               type: array
               items:
                 $ref: ../../../components/schemas/Country.yaml

@@ -22,6 +22,7 @@ responses:
         schema:
           type: object
           required: [data]
+          additionalProperties: false
           properties:
             data:
               $ref: ../../../components/schemas/Country.yaml
