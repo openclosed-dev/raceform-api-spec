@@ -1,8 +1,12 @@
 x-summary: Not Acceptable
 description: |
-  Returned when the `Accept` header contains the JSON:API media type,
-  but every instance of it is modified with media type parameters
-  other than `profile`.
+  This error is returned when the `Accept` header of the request has any of the following problems:
+  - It contains no media range compatible with `application/vnd.api+json`
+    (i.e., `application/vnd.api+json`, `application/*`, or `*/*`).
+  - It contains the JSON:API media type, but every instance of it is modified with media type parameters
+    other than `profile`.
+
+  A request without the `Accept` header is treated as accepting any media type.
   Note that this API supports no extensions, so `ext` is treated as unsupported,
   while `profile` values are ignored.
 content:
