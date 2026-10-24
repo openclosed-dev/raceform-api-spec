@@ -5,6 +5,11 @@ description: |
   Use when asked to review or check the API specification.
 ---
 
+## Scope
+
+The file `spec/openapi.yaml` and the files transitively referenced from it via `$ref`.
+Ignore all other files.
+
 ## Steps
 
 1. Run `make lint` to check for violations of the OpenAPI Specification.
@@ -22,5 +27,5 @@ description: |
 
 - For each finding, provide "File:Line", "Severity (High/Medium/Low)", "Issue", and "Suggested fix".
 - Do not modify the specification; only report the review results.
-- Write the entire report in user's language, including headings, table headers, issue descriptions, and suggested fixes.
+- Write the entire report in the user's language, including headings, table headers, issue descriptions, and suggested fixes.
 - Keep quoted spec text, identifiers, file paths, and proposed English wording in the spec as-is (in English).
