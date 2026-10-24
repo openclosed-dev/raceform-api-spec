@@ -31,6 +31,6 @@ properties:
       header:
         description: |
           A string indicating the name of a single request header which caused the error.
-          This property exists if and only if `status` is `406` or `415`.
-          The value is `Accept` for `406` and `Content-Type` for `415`.
+          This property exists if and only if `status` is `406`.
+          The value is always `Accept`.
         type: string

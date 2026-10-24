@@ -27,5 +27,3 @@ responses:
     $ref: ../../components/responses/400.yaml
   '406':
     $ref: ../../components/responses/406.yaml
-  '415':
-    $ref: ../../components/responses/415.yaml

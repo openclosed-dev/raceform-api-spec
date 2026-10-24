@@ -5,20 +5,24 @@ info:
   description: |
     Web API for processing Raceform data.
 
-    ## Common Specifications
+    ### Common Specifications
     - Clients must percent-encode `[` and `]` in query parameter names.
       Any query parameter whose name contains an unencoded `[` or `]`
       results in a `400` error response.
-    - All responses use the Content-Type `application/vnd.api+json`
+    - All responses use the `Content-Type` `application/vnd.api+json`
       without any media type parameters.
     - Errors are evaluated in the following order:
-      `415`, `406`, `400`, `404`.
+      `406`, `400`, `404`.
       Only the status of the first matching error category is returned.
       A `400` response may contain multiple error objects.
     - When comparing character strings:
       - All characters in the query parameter value, including `%` and `_`, are matched literally.
       - Case-insensitive matching uses Unicode simple case folding.
         Diacritics are significant.
+
+    ### Deviations from the JSON:API Specification
+    - For `GET` operations, the `Content-Type` header and the request body are ignored and not validated.
+      Therefore, `415 Unsupported Media Type` is never returned for `GET` requests.
 
 paths:
   /countries:
