@@ -1,0 +1,11 @@
+name: page[offset]
+in: query
+description: |
+  The number of resources to skip from the beginning of the collection.
+  If the offset is greater than or equal to the total number of resources,
+  `data` is an empty array.
+required: false
+schema:
+  type: integer
+  minimum: 0
+  default: 0

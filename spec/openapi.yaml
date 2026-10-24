@@ -5,16 +5,27 @@ info:
   description: |
     Web API for processing Raceform data.
 
-    Errors are evaluated in the following order:
-    `415`, `406`, `400`, `404`.
-    Only the status of the first matching error category is returned.
-    A `400` response may contain multiple error objects.
-
-    All responses use the Content-Type `application/vnd.api+json`
-    without any media type parameters.
+    ## Common Specifications
+    - Clients must percent-encode `[` and `]` in query parameter names.
+      Any query parameter whose name contains an unencoded `[` or `]`
+      results in a `400` error response.
+    - All responses use the Content-Type `application/vnd.api+json`
+      without any media type parameters.
+    - Errors are evaluated in the following order:
+      `415`, `406`, `400`, `404`.
+      Only the status of the first matching error category is returned.
+      A `400` response may contain multiple error objects.
+    - When comparing character strings:
+      - All characters in the query parameter value, including `%` and `_`, are matched literally.
+      - Case-insensitive matching uses Unicode simple case folding.
+        Diacritics are significant.
 
 paths:
+  /countries:
+    $ref: ./paths/countries/index.yaml
   /countries/{id}:
     $ref: ./paths/countries/_id/index.yaml
+  /horses:
+    $ref: ./paths/horses/index.yaml
   /horses/{id}:
     $ref: ./paths/horses/_id/index.yaml

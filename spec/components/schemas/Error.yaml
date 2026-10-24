@@ -26,6 +26,7 @@ properties:
         description: |
           A string indicating which URI query parameter caused the error.
           This property exists if and only if `status` is `400`.
+          The value is the percent-decoded parameter name (e.g., `page[limit]`).
         type: string
       header:
         description: |

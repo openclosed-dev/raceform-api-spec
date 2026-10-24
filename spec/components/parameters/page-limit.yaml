@@ -1,0 +1,11 @@
+name: page[limit]
+in: query
+description: |
+  The maximum number of resources in `data` to include in the response.
+  If a value greater than `1000` is specified for this parameter,
+  `1000` is applied instead.
+required: false
+schema:
+  type: integer
+  minimum: 1
+  default: 20

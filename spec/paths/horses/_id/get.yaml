@@ -13,21 +13,7 @@ parameters:
   schema:
     type: string
     example: '123e4567-e89b-12d3-a456-426614174000'
-- name: include
-  in: query
-  description: |
-    A comma-separated list of relationship paths of related resources to include in the response document.
-    If omitted or empty, no related resources are included.
-    Duplicate values are allowed.
-    Any value other than `country` results in a `400` error response.
-  required: false
-  style: form
-  explode: false
-  schema:
-    type: array
-    items:
-      type: string
-      enum: [country]
+- $ref: ../../../components/parameters/include-horse.yaml
 responses:
   '200':
     description: Successful response

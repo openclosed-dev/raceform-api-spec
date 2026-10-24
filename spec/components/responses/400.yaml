@@ -2,12 +2,14 @@ x-summary: Bad Request
 description: |
   This error is returned in the following cases:
   - A query parameter not listed in the parameters section was specified.
-    This includes the following query parameters defined in the JSON:API specification:
+    This includes the following query parameters defined in the JSON:API specification
+    but not listed explicitly in the parameters section:
       - `fields`
       - `sort`
       - `page`
       - `filter`
   - An invalid value was specified for a query parameter listed in the parameters section.
+  - A query parameter name contains an unencoded `[` or `]`.
 content:
   application/vnd.api+json:
     schema:

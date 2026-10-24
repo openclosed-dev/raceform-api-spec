@@ -1,0 +1,50 @@
+operationId: list-horses
+summary: List Horses
+description: |
+  List horses.
+parameters:
+- name: filter[name][contains]
+  in: query
+  description: |
+    Returns only horses whose `name` attribute contains the specified value
+    as a substring in a case-insensitive manner.
+    If an empty value is specified, this parameter is ignored.
+  required: false
+  schema:
+    type: string
+- $ref: ../../components/parameters/include-horse.yaml
+- $ref: ../../components/parameters/page-offset.yaml
+- $ref: ../../components/parameters/page-limit.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data, meta]
+          additionalProperties: false
+          properties:
+            data:
+              description: |
+                A collection of horse resources sorted by `id` in ascending lexicographic order.
+              type: array
+              items:
+                $ref: ../../components/schemas/Horse.yaml
+            included:
+              description: |
+                Resources referenced by the `country` relationship of each horse in `data`.
+                Present if and only if the `include` query parameter contains `country`.
+                Each country appears at most once.
+                If `data` is empty, `included` is an empty array.
+              type: array
+              items:
+                $ref: ../../components/schemas/Country.yaml
+            meta:
+              $ref: ../../components/schemas/PaginationMeta.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '406':
+    $ref: ../../components/responses/406.yaml
+  '415':
+    $ref: ../../components/responses/415.yaml

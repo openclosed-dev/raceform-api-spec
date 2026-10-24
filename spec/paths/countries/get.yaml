@@ -1,0 +1,31 @@
+operationId: list-countries
+summary: List Countries
+description: |
+  List countries.
+parameters:
+- $ref: ../../components/parameters/page-offset.yaml
+- $ref: ../../components/parameters/page-limit.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data, meta]
+          additionalProperties: false
+          properties:
+            data:
+              description: |
+                A collection of country resources sorted by `id` in ascending order.
+              type: array
+              items:
+                $ref: ../../components/schemas/Country.yaml
+            meta:
+              $ref: ../../components/schemas/PaginationMeta.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '406':
+    $ref: ../../components/responses/406.yaml
+  '415':
+    $ref: ../../components/responses/415.yaml
