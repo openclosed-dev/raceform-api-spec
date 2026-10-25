@@ -1,0 +1,10 @@
+name: id
+in: path
+description: |
+  The identifier of the resource.
+  Passing any invalid or unknown identifier results in a `404` error response.
+  The server does not validate the format of the identifier.
+required: true
+schema:
+  type: string
+  example: '123e4567-e89b-12d3-a456-426614174000'

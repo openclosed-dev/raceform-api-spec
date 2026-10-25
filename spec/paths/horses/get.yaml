@@ -3,15 +3,7 @@ summary: List Horses
 description: |
   List horses.
 parameters:
-- name: filter[name][contains]
-  in: query
-  description: |
-    Returns only horses whose `name` attribute contains the specified value
-    as a substring in a case-insensitive manner.
-    If an empty value is specified, this parameter is ignored.
-  required: false
-  schema:
-    type: string
+- $ref: ../../components/parameters/filter-name.yaml
 - $ref: ../../components/parameters/include-horse.yaml
 - $ref: ../../components/parameters/page-offset.yaml
 - $ref: ../../components/parameters/page-limit.yaml

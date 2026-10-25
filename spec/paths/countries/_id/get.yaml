@@ -1,7 +1,7 @@
 operationId: get-country
 summary: Get Country
 description: |
-  Get a country specified by the resource identifier.
+  Get a country specified by the identifier.
 parameters:
 - name: id
   in: path

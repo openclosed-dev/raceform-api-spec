@@ -1,0 +1,50 @@
+description: |
+  A resource representing a racecourse.
+type: object
+required: [type, id, attributes, relationships]
+properties:
+  type:
+    description: The type of this resource.
+    type: string
+    const: racecourse
+  id:
+    description: |
+      The identifier of this resource as an opaque string.
+    type: string
+    example: '8c639c56-aed5-40a1-b97f-9cbfd62b1e12'
+  attributes:
+    description: |
+      The attributes of this resource.
+    type: object
+    required: [name]
+    properties:
+      name:
+        description: |
+          The name of this racecourse.
+        type: string
+        example: Ascot
+  relationships:
+    description: |
+      The relationships of this resource.
+    type: object
+    required: [country]
+    properties:
+      country:
+        description: |
+          The country where this racecourse is located.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              A resource identifier object for the related country.
+              This is never `null`.
+            type: object
+            required: [type, id]
+            properties:
+              type:
+                description: The type of the resource.
+                type: string
+                const: country
+              id:
+                $ref: ./IsoCountryCode.yaml

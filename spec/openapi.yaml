@@ -33,3 +33,7 @@ paths:
     $ref: ./paths/horses/index.yaml
   /horses/{id}:
     $ref: ./paths/horses/_id/index.yaml
+  /racecourses:
+    $ref: ./paths/racecourses/index.yaml
+  /racecourses/{id}:
+    $ref: ./paths/racecourses/_id/index.yaml
