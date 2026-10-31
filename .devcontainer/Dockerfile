@@ -23,6 +23,9 @@ WORKDIR /home/${USERNAME}
 RUN mkdir -p .claude .npm-global
 RUN npm config set prefix '~/.npm-global'
 
+ARG REDOCLY_CLI_VERSION
+ARG CLAUDE_CODE_VERSION
+
 RUN npm install -g @redocly/cli@${REDOCLY_CLI_VERSION}
 RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
 
