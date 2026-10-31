@@ -8,10 +8,7 @@ properties:
     type: string
     const: horse
   id:
-    description: |
-      The identifier of this resource as an opaque string.
-    type: string
-    example: '123e4567-e89b-12d3-a456-426614174000'
+    $ref: ./ResourceId.yaml
   attributes:
     description: |
       The attributes of this resource.

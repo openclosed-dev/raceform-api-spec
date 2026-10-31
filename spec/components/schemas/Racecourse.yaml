@@ -8,10 +8,7 @@ properties:
     type: string
     const: racecourse
   id:
-    description: |
-      The identifier of this resource as an opaque string.
-    type: string
-    example: '8c639c56-aed5-40a1-b97f-9cbfd62b1e12'
+    $ref: ./ResourceId.yaml
   attributes:
     description: |
       The attributes of this resource.
