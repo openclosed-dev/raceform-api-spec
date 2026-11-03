@@ -10,7 +10,8 @@
       "extensions": [
         "editorconfig.editorconfig",
         "streetsidesoftware.code-spell-checker",
-        "42Crunch.vscode-openapi"
+        "42Crunch.vscode-openapi",
+        "anthropic.claude-code"
       ]
     }
   },
