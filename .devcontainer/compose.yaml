@@ -10,6 +10,7 @@ services:
       - REDOCLY_CLI_VERSION=2.72.1
     environment:
     - ANTHROPIC_API_KEY
+    - ANTHROPIC_DEFAULT_MODEL=${ANTHROPIC_DEFAULT_MODEL:-sonnet}
     command: sleep infinity
     volumes:
     - type: bind
