@@ -1,0 +1,56 @@
+operationId: list-runs
+summary: List Runs
+description: |
+  List horse runs.
+parameters:
+- $ref: ../../components/parameters/include-run.yaml
+- $ref: ../../components/parameters/page-offset.yaml
+- $ref: ../../components/parameters/page-limit.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data, meta]
+          additionalProperties: false
+          properties:
+            data:
+              description: |
+                A collection of run resources
+                sorted by the `date` and `postTime` of the related race,
+                then by `orderOfFinish`, `saddleNumber`, and `id`, in ascending order
+              type: array
+              items:
+                $ref: ../../components/schemas/Run.yaml
+            included:
+              description: |
+                The resources related to the runs in `data` via the relationships specified in `include`.
+
+                The table below shows the resources included via the `include` parameter.
+
+                | relationships in `include` | resource types to include |
+                | --- | --- |
+                | `race` | `race` |
+                | `race.racecourse` | `race`, `racecourse` |
+                | `race.racecourse.country` | `race`, `racecourse`, `country` |
+                | `horse` | `horse` |
+                | `horse.country` | `horse`, `country` |
+
+                Present if and only if the `include` query parameter is non-empty.
+                Each resource appears at most once.
+                If `data` is empty, `included` is an empty array.
+              type: array
+              items:
+                oneOf:
+                - $ref: ../../components/schemas/Race.yaml
+                - $ref: ../../components/schemas/Racecourse.yaml
+                - $ref: ../../components/schemas/Country.yaml
+                - $ref: ../../components/schemas/Horse.yaml
+            meta:
+              $ref: ../../components/schemas/PaginationMeta.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '406':
+    $ref: ../../components/responses/406.yaml

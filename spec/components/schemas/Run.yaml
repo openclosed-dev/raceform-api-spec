@@ -1,0 +1,80 @@
+description: |
+  A resource representing a horse's participation in a race.
+type: object
+required: [type, id, attributes, relationships]
+properties:
+  type:
+    description: The type of this resource.
+    type: string
+    const: run
+  id:
+    $ref: ./ResourceId.yaml
+  attributes:
+    description: |
+      The attributes of this resource.
+    type: object
+    properties:
+      saddleNumber:
+        description: |
+          The saddle cloth number worn by the horse in this run, unique within the race.
+          Omitted if the saddle cloth number is not recorded.
+        type: integer
+        example: 12
+      drawNumber:
+        description: |
+          The starting stall position of the horse in this run.
+          Omitted for races without starting stalls.
+        type: integer
+        example: 12
+      orderOfFinish:
+        description: |
+          The finishing position of this run.
+          Omitted if the horse did not finish the race or was disqualified.
+          Runs in a dead heat share the same position.
+        type: integer
+        minimum: 1
+        example: 3
+  relationships:
+    description: |
+      The relationships of this resource.
+    type: object
+    required: [horse, race]
+    properties:
+      race:
+        description: |
+          The race in which this run took place.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              A resource identifier object for the related race.
+              This is never `null`.
+            type: object
+            required: [type, id]
+            properties:
+              type:
+                description: The type of the resource.
+                type: string
+                const: race
+              id:
+                $ref: ./ResourceId.yaml
+      horse:
+        description: |
+          The horse that took part in this run.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              A resource identifier object for the related horse.
+              This is never `null`.
+            type: object
+            required: [type, id]
+            properties:
+              type:
+                description: The type of the resource.
+                type: string
+                const: horse
+              id:
+                $ref: ./ResourceId.yaml

@@ -1,0 +1,16 @@
+operationId: delete-run
+summary: Delete Run
+description: |
+  Delete a run specified by the identifier.
+  Deleting an already deleted resource returns `404`.
+parameters:
+- $ref: ../../../components/parameters/id.yaml
+responses:
+  '204':
+    $ref: ../../../components/responses/204.yaml
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '404':
+    $ref: ../../../components/responses/404.yaml
+  '406':
+    $ref: ../../../components/responses/406.yaml

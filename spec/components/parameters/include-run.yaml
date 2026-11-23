@@ -1,0 +1,22 @@
+name: include
+in: query
+description: |
+  A comma-separated list of relationship paths of related resources to include in the response document.
+  If omitted or empty, no related resources are included.
+  Duplicate values are allowed.
+  Only the following values are permitted:
+  - `race`
+  - `race.racecourse`
+  - `race.racecourse.country`
+  - `horse`
+  - `horse.country`
+
+  Any value other than those mentioned above results in a `400` error response.
+required: false
+style: form
+explode: false
+schema:
+  type: array
+  items:
+    type: string
+    enum: [race, race.racecourse, race.racecourse.country, horse, horse.country]

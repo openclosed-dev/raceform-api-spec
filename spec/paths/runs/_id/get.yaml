@@ -1,0 +1,49 @@
+operationId: get-run
+summary: Get Run
+description: |
+  Get a run specified by the identifier.
+parameters:
+- $ref: ../../../components/parameters/id.yaml
+- $ref: ../../../components/parameters/include-run.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data]
+          additionalProperties: false
+          properties:
+            data:
+              $ref: ../../../components/schemas/Run.yaml
+            included:
+              description: |
+                The resources related to the run in `data` via the relationships specified in `include`.
+
+                The table below shows the resources included via the `include` parameter.
+
+                | relationships in `include` | resource types to include |
+                | --- | --- |
+                | `race` | `race` |
+                | `race.racecourse` | `race`, `racecourse` |
+                | `race.racecourse.country` | `race`, `racecourse`, `country` |
+                | `horse` | `horse` |
+                | `horse.country` | `horse`, `country` |
+
+                Present if and only if the `include` query parameter is non-empty.
+                Each resource appears at most once.
+              type: array
+              items:
+                oneOf:
+                - $ref: ../../../components/schemas/Race.yaml
+                - $ref: ../../../components/schemas/Racecourse.yaml
+                - $ref: ../../../components/schemas/Country.yaml
+                - $ref: ../../../components/schemas/Horse.yaml
+              minItems: 1
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '404':
+    $ref: ../../../components/responses/404.yaml
+  '406':
+    $ref: ../../../components/responses/406.yaml

@@ -1,0 +1,48 @@
+operationId: list-races
+summary: List Races
+description: |
+  List horse races.
+parameters:
+- $ref: ../../components/parameters/filter-name.yaml
+- $ref: ../../components/parameters/include-race.yaml
+- $ref: ../../components/parameters/page-offset.yaml
+- $ref: ../../components/parameters/page-limit.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data, meta]
+          additionalProperties: false
+          properties:
+            data:
+              description: |
+                A collection of race resources
+                sorted by `date` and `postTime` in ascending order,
+                then by `id`.
+              type: array
+              items:
+                $ref: ../../components/schemas/Race.yaml
+            included:
+              description: |
+                The resources related to the races in `data` via the relationships specified in `include`,
+                and also country resources if `racecourse.country` is specified.
+                Racecourses are always included when `racecourse.country` is specified,
+                even if `racecourse` is not.
+                Present if and only if the `include` query parameter is non-empty.
+                Each resource appears at most once.
+                If `data` is empty, `included` is an empty array.
+              type: array
+              items:
+                oneOf:
+                - $ref: ../../components/schemas/Racecourse.yaml
+                - $ref: ../../components/schemas/Country.yaml
+                - $ref: ../../components/schemas/Run.yaml
+            meta:
+              $ref: ../../components/schemas/PaginationMeta.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '406':
+    $ref: ../../components/responses/406.yaml

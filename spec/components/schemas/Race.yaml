@@ -1,0 +1,85 @@
+description: |
+  A resource representing a horse race.
+  Only races that have already been run are provided.
+type: object
+required: [type, id, attributes, relationships]
+properties:
+  type:
+    description: The type of this resource.
+    type: string
+    const: race
+  id:
+    $ref: ./ResourceId.yaml
+  attributes:
+    description: |
+      The attributes of this resource.
+    type: object
+    required: [name, date, postTime]
+    properties:
+      name:
+        description: |
+          The name of this race.
+        type: string
+        example: Norfolk Stakes
+      date:
+        description: |
+          The date on which this race was held, in the local time of the racecourse.
+        type: string
+        format: date
+        example: '2026-06-18'
+      postTime:
+        description: |
+          The actual start time of this race in the local time of the racecourse
+          in 24-hour `HH:MM` format without a UTC offset.
+        type: string
+        pattern: '^([01][0-9]|2[0-3]):[0-5][0-9]$'
+        example: '14:30'
+  relationships:
+    description: |
+      The relationships of this resource.
+    type: object
+    required: [racecourse, runners]
+    properties:
+      racecourse:
+        description: |
+          The racecourse where this race is held.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              A resource identifier object for the related racecourse.
+              This is never `null`.
+            type: object
+            required: [type, id]
+            properties:
+              type:
+                description: The type of the resource.
+                type: string
+                const: racecourse
+              id:
+                $ref: ./ResourceId.yaml
+      runners:
+        description: |
+          The runners in this race.
+          Non-runners are not included.
+          Sorted by `orderOfFinish`, `saddleNumber`, and `id` in ascending order.
+          Runners without `orderOfFinish` or `saddleNumber` are placed after those with the respective attribute.
+        type: object
+        required: [data]
+        properties:
+          data:
+            description: |
+              Resource identifier objects for the related runners.
+            type: array
+            minItems: 1
+            items:
+              type: object
+              required: [type, id]
+              properties:
+                type:
+                  description: The type of the resource.
+                  type: string
+                  const: run
+                id:
+                  $ref: ./ResourceId.yaml

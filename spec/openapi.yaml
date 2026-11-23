@@ -11,6 +11,7 @@ info:
       results in a `400` error response.
     - All responses use the `Content-Type` `application/vnd.api+json`
       without any media type parameters.
+      For `204` responses, which have no body, the server does not return a `Content-Type` header.
     - Errors are evaluated in the following order:
       `406`, `400`, `404`.
       Only the status of the first matching error category is returned.
@@ -21,8 +22,8 @@ info:
         Diacritics are significant.
 
     ### Deviations from the JSON:API Specification
-    - For `GET` operations, the `Content-Type` header and the request body are ignored and not validated.
-      Therefore, `415 Unsupported Media Type` is never returned for `GET` requests.
+    - For `GET` and `DELETE` operations, the `Content-Type` header and the request body are ignored and not validated.
+      Therefore, `415 Unsupported Media Type` is never returned for these requests.
 
 paths:
   /countries:
@@ -33,7 +34,15 @@ paths:
     $ref: ./paths/horses/index.yaml
   /horses/{id}:
     $ref: ./paths/horses/_id/index.yaml
+  /races:
+    $ref: ./paths/races/index.yaml
+  /races/{id}:
+    $ref: ./paths/races/_id/index.yaml
   /racecourses:
     $ref: ./paths/racecourses/index.yaml
   /racecourses/{id}:
     $ref: ./paths/racecourses/_id/index.yaml
+  /runs:
+    $ref: ./paths/runs/index.yaml
+  /runs/{id}:
+    $ref: ./paths/runs/_id/index.yaml

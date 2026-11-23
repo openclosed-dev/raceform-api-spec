@@ -1,0 +1,39 @@
+operationId: get-race
+summary: Get Race
+description: |
+  Get a race specified by the identifier.
+parameters:
+- $ref: ../../../components/parameters/id.yaml
+- $ref: ../../../components/parameters/include-race.yaml
+responses:
+  '200':
+    description: Successful response
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required: [data]
+          additionalProperties: false
+          properties:
+            data:
+              $ref: ../../../components/schemas/Race.yaml
+            included:
+              description: |
+                The resources related to the race in `data` via the relationships specified in `include`,
+                and also the country resource if `racecourse.country` is specified.
+                The racecourse is always included when `racecourse.country` is specified,
+                even if `racecourse` is not.
+                Present if and only if the `include` query parameter is non-empty.
+              type: array
+              items:
+                oneOf:
+                - $ref: ../../../components/schemas/Racecourse.yaml
+                - $ref: ../../../components/schemas/Country.yaml
+                - $ref: ../../../components/schemas/Run.yaml
+              minItems: 1
+  '400':
+    $ref: ../../../components/responses/400.yaml
+  '404':
+    $ref: ../../../components/responses/404.yaml
+  '406':
+    $ref: ../../../components/responses/406.yaml
