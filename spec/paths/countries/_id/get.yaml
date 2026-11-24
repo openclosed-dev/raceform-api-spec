@@ -2,6 +2,7 @@ operationId: get-country
 summary: Get Country
 description: |
   Get a country specified by the identifier.
+tags: [country]
 parameters:
 - name: id
   in: path

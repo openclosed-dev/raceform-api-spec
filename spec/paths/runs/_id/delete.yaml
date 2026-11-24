@@ -3,6 +3,7 @@ summary: Delete Run
 description: |
   Delete a run specified by the identifier.
   Deleting an already deleted resource returns `404`.
+tags: [run]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 responses:

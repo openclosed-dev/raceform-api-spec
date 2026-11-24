@@ -2,6 +2,7 @@ operationId: get-horse
 summary: Get Horse
 description: |
   Get a horse specified by the identifier.
+tags: [horse]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 - $ref: ../../../components/parameters/include-horse.yaml

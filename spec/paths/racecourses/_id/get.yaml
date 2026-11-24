@@ -2,6 +2,7 @@ operationId: get-racecourse
 summary: Get Racecourse
 description: |
   Get a racecourse specified by the identifier.
+tags: [racecourse]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 - $ref: ../../../components/parameters/include-racecourse.yaml

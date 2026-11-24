@@ -25,6 +25,13 @@ info:
     - For `GET` and `DELETE` operations, the `Content-Type` header and the request body are ignored and not validated.
       Therefore, `415 Unsupported Media Type` is never returned for these requests.
 
+tags:
+- name: country
+- name: horse
+- name: racecourse
+- name: race
+- name: run
+
 paths:
   /countries:
     $ref: ./paths/countries/index.yaml

@@ -2,6 +2,7 @@ operationId: get-race
 summary: Get Race
 description: |
   Get a race specified by the identifier.
+tags: [race]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 - $ref: ../../../components/parameters/include-race.yaml

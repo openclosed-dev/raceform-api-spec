@@ -5,3 +5,4 @@ rules:
   info-license: off
   no-empty-servers: off
   security-defined: off
+  tag-description: off

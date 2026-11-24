@@ -2,6 +2,7 @@ operationId: list-horses
 summary: List Horses
 description: |
   List horses.
+tags: [horse]
 parameters:
 - $ref: ../../components/parameters/filter-name.yaml
 - $ref: ../../components/parameters/include-horse.yaml

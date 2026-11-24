@@ -2,6 +2,7 @@ operationId: list-racecourses
 summary: List Racecourses
 description: |
   List racecourses.
+tags: [racecourse]
 parameters:
 - $ref: ../../components/parameters/filter-name.yaml
 - $ref: ../../components/parameters/include-racecourse.yaml

@@ -2,6 +2,7 @@ operationId: list-races
 summary: List Races
 description: |
   List horse races.
+tags: [race]
 parameters:
 - $ref: ../../components/parameters/filter-name.yaml
 - $ref: ../../components/parameters/include-race.yaml

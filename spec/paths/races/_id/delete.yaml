@@ -5,6 +5,7 @@ description: |
   The run resources related to the race are deleted atomically along with it.
   Afterward, requests for those runs return `404`.
   Deleting an already deleted resource returns `404`.
+tags: [race]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 responses:

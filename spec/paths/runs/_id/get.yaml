@@ -2,6 +2,7 @@ operationId: get-run
 summary: Get Run
 description: |
   Get a run specified by the identifier.
+tags: [run]
 parameters:
 - $ref: ../../../components/parameters/id.yaml
 - $ref: ../../../components/parameters/include-run.yaml

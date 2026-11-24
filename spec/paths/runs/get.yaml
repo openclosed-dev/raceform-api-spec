@@ -2,6 +2,7 @@ operationId: list-runs
 summary: List Runs
 description: |
   List horse runs.
+tags: [run]
 parameters:
 - $ref: ../../components/parameters/include-run.yaml
 - $ref: ../../components/parameters/page-offset.yaml

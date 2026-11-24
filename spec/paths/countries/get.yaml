@@ -2,6 +2,7 @@ operationId: list-countries
 summary: List Countries
 description: |
   List countries.
+tags: [country]
 parameters:
 - $ref: ../../components/parameters/page-offset.yaml
 - $ref: ../../components/parameters/page-limit.yaml
